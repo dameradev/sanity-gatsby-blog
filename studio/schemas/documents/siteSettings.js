@@ -32,5 +32,12 @@ export default {
       title: "Author",
       to: [{ type: "author" }],
     },
+
+    {
+      name: "footer",
+      type: "footer",
+      description: "Fill in the content of the footer here",
+      title: "Footer",
+    },
   ],
 };

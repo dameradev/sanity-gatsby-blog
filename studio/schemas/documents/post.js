@@ -63,10 +63,30 @@ export default {
         },
       ],
     },
+
     {
       name: "body",
       type: "bodyPortableText",
       title: "Body",
+    },
+
+    {
+      name: "services",
+      type: "boolean",
+      title: "Services",
+    },
+    {
+      name: "gallery",
+      type: "array",
+      title: "Images",
+      of: [
+        {
+          type: "reference",
+          to: {
+            type: "picture",
+          },
+        },
+      ],
     },
   ],
   orderings: [

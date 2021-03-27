@@ -1,10 +1,19 @@
-@import '../styles/custom-media.css';
-@import '../styles/custom-properties.css';
+@import "../styles/custom-media.css";
+@import "../styles/custom-properties.css";
 
-.root {}
+.root {
+}
 
 .title {
-  composes: responsiveTitle1 from './typography.module.css';
+  composes: responsiveTitle1 from "./typography.module.css";
+
+  z-index: 100;
+  font-size: calc(2.5rem + 1.5vw);
+  position: absolute;
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .mainImage {
@@ -35,6 +44,9 @@
 }
 
 .mainContent {
+  padding: 10% 15%;
+
+  color: var(--color-gray);
   @nest & a {
     color: var(--color-accent);
 
@@ -59,11 +71,24 @@
   }
 }
 
+.imageGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+}
+
+.image {
+  transition: all 0.3s;
+}
+.image:hover {
+  opacity: 0.8;
+}
+
 .metaContent {
 }
 
 .publishedAt {
-  composes: small from './typography.module.css';
+  composes: small from "./typography.module.css";
   margin: 2rem 0 3rem;
   color: var(--color-gray);
 }
@@ -84,6 +109,6 @@
 }
 
 .categoriesHeadline {
-  composes: base from './typography.module.css';
+  composes: base from "./typography.module.css";
   margin: 0.5rem 0 0;
 }

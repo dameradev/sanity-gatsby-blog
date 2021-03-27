@@ -24,6 +24,15 @@ export const query = graphql`
       slug {
         current
       }
+      gallery {
+        picture {
+          asset {
+            fluid {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
+      }
       _rawExcerpt(resolveReferences: { maxDepth: 5 })
       _rawBody(resolveReferences: { maxDepth: 5 })
       authors {

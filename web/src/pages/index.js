@@ -6,7 +6,9 @@ import {
   mapEdgesToNodes,
 } from "../lib/helpers";
 import BlogPostPreviewList from "../components/blog-post-preview-list";
+import FilterList from "../components/filter-list";
 import Container from "../components/container";
+import ContactForm from "../components/contact-form";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
@@ -40,6 +42,13 @@ export const query = graphql`
       description
       keywords
     }
+    categories: allSanityCategory {
+      edges {
+        node {
+          title
+        }
+      }
+    }
     posts: allSanityPost(
       limit: 6
       sort: { fields: [publishedAt], order: DESC }
@@ -58,6 +67,7 @@ export const query = graphql`
           slug {
             current
           }
+          services
         }
       }
     }
@@ -67,6 +77,8 @@ export const query = graphql`
 const IndexPage = (props) => {
   const { data, errors } = props;
 
+  // console.log(data);
+  const categories = data.categories.edges;
   if (errors) {
     return (
       <Layout>
@@ -88,6 +100,7 @@ const IndexPage = (props) => {
     );
   }
 
+  // console.log(postNodes);
   return (
     <Layout>
       <SEO
@@ -95,15 +108,22 @@ const IndexPage = (props) => {
         description={site.description}
         keywords={site.keywords}
       />
-      <Container>
-        <h1 hidden>Welcome to {site.title}</h1>
+      <Container homePage={true}>
+        <h1>{site.description}</h1>
+        <FilterList categories={categories} />
+        {/* <ul>
+      
+        </ul> */}
+
         {postNodes && (
           <BlogPostPreviewList
-            title="Latest blog posts"
+            // title="Latest blog posts"
             nodes={postNodes}
             browseMoreHref="/archive/"
           />
         )}
+
+        <ContactForm />
       </Container>
     </Layout>
   );

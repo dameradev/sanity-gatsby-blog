@@ -1,10 +1,18 @@
 import React from "react";
+import { Link } from "gatsby";
 import Header from "./header";
 
 import "../styles/layout.css";
 import * as styles from "./layout.module.css";
 
-const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle }) => (
+const Layout = ({
+  children,
+  onHideNav,
+  onShowNav,
+  showNav,
+  siteTitle,
+  footer,
+}) => (
   <>
     <Header
       siteTitle={siteTitle}
@@ -12,15 +20,39 @@ const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle }) => (
       onShowNav={onShowNav}
       showNav={showNav}
     />
+    {console.log(footer)}
     <div className={styles.content}>{children}</div>
     <footer className={styles.footer}>
       <div className={styles.footerWrapper}>
-        <div className={styles.siteInfo}>
-          &copy; {new Date().getFullYear()}, Built with{" "}
-          <a href="https://www.sanity.io">Sanity</a> &amp;{" "}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+        <div>
+          <h3>{footer.about}</h3>
+          <p>{footer.aboutDescription}</p>
+        </div>
+        <div>
+          <h3>{footer.contact}</h3>
+          <ul>
+            {footer.contactDescription.map((el) => (
+              <li key={el}>{el}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3>Quick links</h3>
+          <ul>
+            {footer.quickLinks.map((el) => (
+              <li key={el.text}>
+                <Link to={el.link}>{el.text}</Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
+      {/* <div className={styles.siteInfo}>
+        {console.log(footer)}
+        Copyright &copy; {new Date().getFullYear()},{" "}
+        <span>Budapest Agency</span>
+      </div> */}
     </footer>
   </>
 );

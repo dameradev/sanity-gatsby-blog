@@ -1,12 +1,16 @@
-@import '../styles/custom-media.css';
+@import "../styles/custom-media.css";
 
 .root {
   box-sizing: border-box;
-  max-width: 960px;
+  /* max-width: 1440px; */
   padding: 1.5em;
   margin: 0 auto;
 
   @media (--media-min-small) {
     padding: 2em;
   }
+}
+
+.homePage {
+  max-width: 1440px;
 }

@@ -6,6 +6,17 @@ const query = graphql`
   query SiteTitleQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
+      footer {
+        contact
+        contactDescription
+        about
+        aboutDescription
+        copyright
+        quickLinks {
+          link
+          text
+        }
+      }
     }
   }
 `;
@@ -35,6 +46,7 @@ function LayoutContainer(props) {
       siteTitle={data.site.title}
       onHideNav={handleHideNav}
       onShowNav={handleShowNav}
+      footer={data.site.footer}
     />
   );
 }
