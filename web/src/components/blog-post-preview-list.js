@@ -1,11 +1,13 @@
 import * as styles from "./blog-post-preview-list.module.css";
 import BlogPostPreview from "./blog-post-preview";
-import { Link } from "gatsby";
+
 import React from "react";
+import Title from "./Title";
 
 function BlogPostPreviewGrid(props) {
   return (
     <div className={styles.root}>
+      <Title title="From our collecion" />
       {props.title && <h2 className={styles.headline}>{props.title}</h2>}
       <ul className={styles.grid}>
         {props.nodes &&
@@ -15,11 +17,6 @@ function BlogPostPreviewGrid(props) {
             </li>
           ))}
       </ul>
-      {props.browseMoreHref && (
-        <div className={styles.browseMoreNav}>
-          <Link to={props.browseMoreHref}>Browse more</Link>
-        </div>
-      )}
     </div>
   );
 }

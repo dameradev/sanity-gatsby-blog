@@ -12,6 +12,8 @@ import ContactForm from "../components/contact-form";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
+import GalleryGrid from "../components/GalleryGrid";
+import ThisIsUs from "../components/ThisIsUs";
 
 export const query = graphql`
   fragment SanityImage on SanityMainImage {
@@ -71,6 +73,17 @@ export const query = graphql`
         }
       }
     }
+    images: allSanityPicture {
+      nodes {
+        picture {
+          asset {
+            fluid {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
+      }
+    }
   }
 `;
 
@@ -78,7 +91,8 @@ const IndexPage = (props) => {
   const { data, errors } = props;
 
   // console.log(data);
-  const categories = data.categories.edges;
+  let images = data.images.nodes;
+  images = images.map((imageObject) => imageObject.picture.asset);
   if (errors) {
     return (
       <Layout>
@@ -109,8 +123,8 @@ const IndexPage = (props) => {
         keywords={site.keywords}
       />
       <Container homePage={true}>
-        <h1>{site.description}</h1>
-        <FilterList categories={categories} />
+        {/* <h1>{site.description}</h1>
+        <FilterList categories={categories} /> */}
         {/* <ul>
       
         </ul> */}
@@ -122,8 +136,9 @@ const IndexPage = (props) => {
             browseMoreHref="/archive/"
           />
         )}
-
-        <ContactForm />
+        <GalleryGrid images={images} />
+        <ThisIsUs />
+        {/* <ContactForm />  */}
       </Container>
     </Layout>
   );

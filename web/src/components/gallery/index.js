@@ -4,6 +4,8 @@ import ThumbGrid from "./thumbnails";
 import LightBox from "./lightbox";
 import { Grid } from "@material-ui/core";
 
+import "../GalleryGrid.scss";
+
 const GalleryComponent = (props) => {
   const [showLightbox, setShowLightbox] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -23,7 +25,7 @@ const GalleryComponent = (props) => {
     setSelectedImage((i + 1) % length);
   };
   return (
-    <Grid container spacing={24} justify="center">
+    <div className="gallery" justify="center">
       <ThumbGrid images={props.images} handleOpen={handleOpen} />
       {showLightbox && selectedImage !== null && (
         <LightBox
@@ -34,7 +36,7 @@ const GalleryComponent = (props) => {
           selectedImage={selectedImage}
         />
       )}
-    </Grid>
+    </div>
   );
 };
 export default GalleryComponent;

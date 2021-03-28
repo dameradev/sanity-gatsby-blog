@@ -6,7 +6,7 @@ import PortableText from "./portableText";
 import React from "react";
 import { buildImageObj } from "../lib/helpers";
 import { imageUrlFor } from "../lib/image-url";
-import Gallery from "../components/gallery";
+import GalleryGrid from "../components/GalleryGrid";
 // import Image from "gatsby-image";
 
 function BlogPost(props) {
@@ -54,7 +54,7 @@ function BlogPost(props) {
             ))}
           </div> */}
 
-          <Gallery images={images} />
+          <GalleryGrid images={images} />
         </div>
       </Container>
     </article>

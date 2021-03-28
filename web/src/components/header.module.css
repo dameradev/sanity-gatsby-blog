@@ -55,7 +55,7 @@
 
   & svg {
     display: block;
-    fill: inheriat;
+    fill: inherit;
   }
 
   @media (max-width: 768px) {
