@@ -1,0 +1,48 @@
+@import "../styles/custom-media.css";
+@import "../styles/custom-properties.css";
+
+.contact-us {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--color-primary);
+
+  padding: 0 8rem;
+  margin: 0 -8rem;
+  margin-top: 5rem;
+  h1 {
+    font-weight: 200;
+  }
+
+  &__form {
+    width: 30rem;
+    display: flex;
+    flex-direction: column;
+
+    & > * {
+      margin-bottom: 2rem;
+    }
+
+    input,
+    textarea {
+      border: none;
+      padding: 1rem;
+      &::placeholder {
+        color: var(--color-gray);
+      }
+    }
+
+    textarea {
+      height: 10rem;
+    }
+
+    button {
+      height: 3rem;
+      background: var(--color-dark-gray);
+      color: #fff;
+      text-transform: uppercase;
+    }
+  }
+}

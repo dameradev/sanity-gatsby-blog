@@ -14,6 +14,7 @@ import SEO from "../components/seo";
 import Layout from "../containers/layout";
 import GalleryGrid from "../components/GalleryGrid";
 import ThisIsUs from "../components/ThisIsUs";
+import ContactUs from "../components/ContactUs";
 
 export const query = graphql`
   fragment SanityImage on SanityMainImage {
@@ -138,6 +139,7 @@ const IndexPage = (props) => {
         )}
         <GalleryGrid images={images} />
         <ThisIsUs />
+        <ContactUs />
         {/* <ContactForm />  */}
       </Container>
     </Layout>

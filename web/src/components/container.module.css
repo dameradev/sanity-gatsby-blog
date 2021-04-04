@@ -3,7 +3,7 @@
 .root {
   box-sizing: border-box;
   /* max-width: 1440px; */
-  padding: 1.5em;
+  /* padding: 1.5em; */
   margin: 0 auto;
 
   @media (--media-min-small) {
@@ -12,5 +12,6 @@
 }
 
 .homePage {
-  max-width: 1440px;
+  /* max-width: 1440px; */
+  padding: 0 8rem;
 }

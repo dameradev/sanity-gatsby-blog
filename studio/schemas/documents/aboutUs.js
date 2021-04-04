@@ -4,13 +4,37 @@ export default {
   title: "About us",
   fields: [
     {
-      name: "title",
+      name: "firstTitle",
       type: "string",
       title: "Title",
     },
 
     {
-      name: "body",
+      name: "firstParagraph",
+      type: "bodyPortableText",
+      title: "Body",
+    },
+
+    {
+      name: "secondTitle",
+      type: "string",
+      title: "Title",
+    },
+
+    {
+      name: "secondParagraph",
+      type: "bodyPortableText",
+      title: "Body",
+    },
+
+    {
+      name: "thirdTitle",
+      type: "string",
+      title: "Title",
+    },
+
+    {
+      name: "thirdParagraph",
       type: "bodyPortableText",
       title: "Body",
     },
