@@ -43,8 +43,12 @@ export const query = graphql`
             }
           }
         }
-        title
-        _rawBody
+        _rawFirstParagraph
+        _rawSecondParagraph
+        _rawThirdParagraph
+        thirdTitle
+        secondTitle
+        firstTitle
         awards {
           award
           year
@@ -61,9 +65,20 @@ const AboutPage = (props) => {
   const about = data.allSanityAboutUs.nodes[0];
   console.log(about);
 
-  const { title, _rawBody, people, perks, awards, testamonials } = about;
+  const {
+    firstTitle,
+    secondTitle,
+    thirdTitle,
+    _rawFirstParagraph,
+    _rawSecondParagraph,
+    _rawThirdParagraph,
+    people,
+    perks,
+    awards,
+    testamonials,
+  } = about;
 
-  // console.log(postNodes);
+  // console.log(_rawBody);
   return (
     <Layout>
       <SEO
@@ -72,8 +87,12 @@ const AboutPage = (props) => {
       // keywords={site.keywords}
       />
       <Container homePage={true}>
-        <h1>{title}</h1>
-        {_rawBody && <PortableText blocks={_rawBody} />}
+        <h1>{firstTitle}</h1>
+        {_rawFirstParagraph && <PortableText blocks={_rawFirstParagraph} />}
+        <h1>{secondTitle}</h1>
+        {_rawSecondParagraph && <PortableText blocks={_rawSecondParagraph} />}
+        <h1>{thirdTitle}</h1>
+        {_rawThirdParagraph && <PortableText blocks={_rawThirdParagraph} />}
 
         <ul className={styles.people}>
           {people.map((person) => (
