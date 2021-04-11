@@ -39,6 +39,12 @@ export default {
       title: "Body",
     },
     {
+      name: "mainImage",
+      type: "mainImage",
+      title: "Main image",
+    },
+    
+    {
       title: "People",
       type: "array",
       name: "people",
@@ -79,6 +85,10 @@ export default {
           type: "testamonial",
         },
       ],
+
+      
     },
+    
   ],
+  
 };
