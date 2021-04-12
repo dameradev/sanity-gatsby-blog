@@ -2,22 +2,26 @@ import React from "react";
 import { graphql } from "gatsby";
 import Image from "gatsby-image";
 import * as styles from "../styles/about.module.css";
-import { imageUrlFor } from "../lib/image-url";
+// import { imageUrlFor } from "../lib/image-url";
 
 import PortableText from "../components/portableText";
 import Container from "../components/container";
-import ContactForm from "../components/contact-form";
-import GraphQLErrorList from "../components/graphql-error-list";
+// import ContactForm from "../components/contact-form";
+// import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
-import logo1 from "../images/perks/logo1.svg"
-import logo2 from "../images/perks/logo2.svg"
-import logo3 from "../images/perks/logo3.svg"
+import logo1 from "../images/perks/logo1.svg";
+import logo2 from "../images/perks/logo2.svg";
+import logo3 from "../images/perks/logo3.svg";
 
 export const query = graphql`
   query AboutPageQuery {
     allSanityAboutUs {
       nodes {
+        mainImage {
+          ...SanityImage
+          alt
+        }
         people {
           name
           picture {
@@ -29,8 +33,8 @@ export const query = graphql`
               }
             }
           }
-        } 
-     
+        }
+
         perks {
           description
           title
@@ -54,7 +58,7 @@ export const query = graphql`
         thirdTitle
         secondTitle
         firstTitle
-        
+
         awards {
           award
           year
@@ -66,16 +70,13 @@ export const query = graphql`
 
 let logoDispay = (value) => {
   if (value == 0) {
-    return <img className={styles.perks__img} src={logo1} />
+    return <img className={styles.perks__img} src={logo1} />;
+  } else if (value == 1) {
+    return <img className={styles.perks__img} src={logo2} />;
+  } else if (value == 2) {
+    return <img className={styles.perks__img} src={logo3} />;
   }
-  else if (value == 1) {
-    return <img className={styles.perks__img} src={logo2} />
-  }
-  else if (value == 2) {
-    return <img className={styles.perks__img} src={logo3} />
-  }
-
-}
+};
 const AboutPage = (props) => {
   const { data, errors } = props;
 
@@ -94,9 +95,10 @@ const AboutPage = (props) => {
     perks,
     awards,
     testamonials,
+    mainImage,
   } = about;
 
-  // console.log(_rawBody);
+  console.log(mainImage);
   return (
     <Layout>
       <SEO
@@ -104,7 +106,8 @@ const AboutPage = (props) => {
       // description={site.description}
       // keywords={site.keywords}
       />
-      <Container homePage={true}>
+      <Container>
+        {/* <Image fluid={mainImage.asset.fluid} /> */}
         <div className={styles.first__div}>
           <div className={styles.first__image}></div>
           <div className={styles.first__paragraph}>
@@ -128,12 +131,12 @@ const AboutPage = (props) => {
         </div>
       )} */}
         <div className={styles.first__div}>
-
           <div className={styles.first__paragraph}>
             <h1 className={styles.first__h1}>{secondTitle}</h1>
             <hr></hr>
-            {_rawSecondParagraph && <PortableText blocks={_rawSecondParagraph} />}
-
+            {_rawSecondParagraph && (
+              <PortableText blocks={_rawSecondParagraph} />
+            )}
           </div>
           <div className={styles.first__image}></div>
         </div>
@@ -144,7 +147,6 @@ const AboutPage = (props) => {
               {logoDispay(index)}
               <h3 className={styles.perks__title}>{perk.title}</h3>
               <p className={styles.perks__p}>{perk.description}</p>
-
             </li>
           ))}
         </ul>
@@ -161,23 +163,28 @@ const AboutPage = (props) => {
           <h1 className={styles.awards__title}>Awards & Keydates</h1>
           {awards.map((award) => (
             <li key={award.award} className={styles.awards__li}>
-              <div className={styles.awards__div}></div> <p>  <span className={styles.awards__year}>{award.year}</span> <br></br><span className={styles.awards__desc}>{award.award}</span>
+              <div className={styles.awards__div}></div>{" "}
+              <p>
+                {" "}
+                <span className={styles.awards__year}>{award.year}</span>{" "}
+                <br></br>
+                <span className={styles.awards__desc}>{award.award}</span>
               </p>
             </li>
           ))}
         </ul>
-        <h1>Meet our team</h1>
-        <ul className={styles.people}>
-          {people.map((person) => (
-            <li key={person.name}>
-              <Image fluid={person.picture.picture.asset.fluid} />
+        <div className={styles.peopleWrapper}>
+          <h1>Meet our team</h1>
+          <ul className={styles.people}>
+            {people.map((person) => (
+              <li key={person.name}>
+                <Image fluid={person.picture.picture.asset.fluid} />
 
-              <h3>{person.name}</h3>
-            </li>
-
-          ))}
-        </ul>
-
+                <h3>{person.name}</h3>
+              </li>
+            ))}
+          </ul>
+        </div>
 
         <ul className={styles.testamonials}>
           {testamonials.map(({ name, content, picture }) => (
@@ -188,13 +195,10 @@ const AboutPage = (props) => {
                   fluid={picture.picture.asset.fluid}
                 />
               </div>
-              <p>{name}</p>
-              <name>{content}</name>
-
+              <p className={styles.content}>{content}</p>
+              <h2>{name}</h2>
             </li>
-
           ))}
-
         </ul>
       </Container>
     </Layout>

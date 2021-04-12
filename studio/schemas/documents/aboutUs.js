@@ -4,6 +4,12 @@ export default {
   title: "About us",
   fields: [
     {
+      name: "mainImage",
+      type: "mainImage",
+      title: "Main image",
+    },
+
+    {
       name: "firstTitle",
       type: "string",
       title: "Title",
@@ -38,12 +44,6 @@ export default {
       type: "bodyPortableText",
       title: "Body",
     },
-    {
-      name: "mainImage",
-      type: "mainImage",
-      title: "Main image",
-    },
-    
     {
       title: "People",
       type: "array",
@@ -85,10 +85,6 @@ export default {
           type: "testamonial",
         },
       ],
-
-      
     },
-    
   ],
-  
 };
