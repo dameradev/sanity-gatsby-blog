@@ -10,6 +10,11 @@ export default {
       title: "Title",
     },
     {
+      name: "bannerImage",
+      type: "picture",
+      title: "Banner Image",
+    },
+    {
       name: "description",
       type: "text",
       title: "Description",

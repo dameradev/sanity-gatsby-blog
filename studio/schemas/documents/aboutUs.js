@@ -5,7 +5,7 @@ export default {
   fields: [
     {
       name: "mainImage",
-      type: "mainImage",
+      type: "picture",
       title: "Main image",
     },
 

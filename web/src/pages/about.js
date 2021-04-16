@@ -19,8 +19,13 @@ export const query = graphql`
     allSanityAboutUs {
       nodes {
         mainImage {
-          ...SanityImage
-          alt
+          picture {
+            asset {
+              fluid {
+                ...GatsbySanityImageFluid
+              }
+            }
+          }
         }
         people {
           name
@@ -107,7 +112,13 @@ const AboutPage = (props) => {
       // keywords={site.keywords}
       />
       <Container>
-        {/* <Image fluid={mainImage.asset.fluid} /> */}
+        <div className={styles.aboutus__banner}>
+          <div className={styles.aboutus__text}>
+            <h1>About budapest agency</h1>
+            <h3>This is your next travel and eventmaker in budapest!</h3>
+          </div>
+          <Image fluid={mainImage.picture.asset.fluid} />
+        </div>
         <div className={styles.first__div}>
           <div className={styles.first__image}></div>
           <div className={styles.first__paragraph}>
@@ -116,20 +127,21 @@ const AboutPage = (props) => {
             {_rawFirstParagraph && <PortableText blocks={_rawFirstParagraph} />}
           </div>
         </div>
-        {/* {mainImage && mainImage.asset && (
-        <div className={styles.mainImage}>
-          <img
-            src={imageUrlFor(buildImageObj(mainImage))
-              .width(1200)
-              .height(Math.floor((9 / 16) * 1200))
-              .fit("crop")
-              .auto("format")
-              .url()}
-            alt={mainImage.alt}
-          />
-          <h1 className={styles.title}>{title}</h1>
-        </div>
-      )} */}
+
+        {/* {mainImage && mainImage.picture && (
+          <div className={styles.mainImage}>
+            <img
+              src={imageUrlFor(buildImageObj(mainImage))
+                .width(1200)
+                .height(Math.floor((9 / 16) * 1200))
+                .fit("crop")
+                .auto("format")
+                .url()}
+              alt={mainImage.alt}
+            />
+            <h1 className={styles.title}>{title}</h1>
+          </div>
+        )} */}
         <div className={styles.first__div}>
           <div className={styles.first__paragraph}>
             <h1 className={styles.first__h1}>{secondTitle}</h1>

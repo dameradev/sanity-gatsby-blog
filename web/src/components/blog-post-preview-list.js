@@ -6,18 +6,20 @@ import Title from "./Title";
 
 function BlogPostPreviewGrid(props) {
   return (
-    <div className={styles.root}>
+    <>
       <Title title="From our collecion" />
-      {props.title && <h2 className={styles.headline}>{props.title}</h2>}
-      <ul className={styles.grid}>
-        {props.nodes &&
-          props.nodes.map((node) => (
-            <li key={node.id}>
-              <BlogPostPreview {...node} isInList />
-            </li>
-          ))}
-      </ul>
-    </div>
+      <div className={styles.root}>
+        {props.title && <h2 className={styles.headline}>{props.title}</h2>}
+        <ul className={styles.grid}>
+          {props.nodes &&
+            props.nodes.map((node) => (
+              <li key={node.id}>
+                <BlogPostPreview {...node} isInList />
+              </li>
+            ))}
+        </ul>
+      </div>
+    </>
   );
 }
 

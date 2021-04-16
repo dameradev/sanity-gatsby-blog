@@ -16,6 +16,10 @@ import GalleryGrid from "../components/GalleryGrid";
 import ThisIsUs from "../components/ThisIsUs";
 import ContactUs from "../components/ContactUs";
 
+import Image from "gatsby-image";
+
+import "../styles/homepage.scss";
+
 export const query = graphql`
   fragment SanityImage on SanityMainImage {
     crop {
@@ -44,6 +48,15 @@ export const query = graphql`
       title
       description
       keywords
+      bannerImage {
+        picture {
+          asset {
+            fluid {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
+      }
     }
     categories: allSanityCategory {
       edges {
@@ -74,7 +87,7 @@ export const query = graphql`
         }
       }
     }
-    images: allSanityPicture {
+    images: allSanityPicture(limit: 14) {
       nodes {
         picture {
           asset {
@@ -92,6 +105,7 @@ const IndexPage = (props) => {
   const { data, errors } = props;
 
   // console.log(data);
+  console.log(data, "here");
   let images = data.images.nodes;
   images = images.map((imageObject) => imageObject.picture.asset);
   if (errors) {
@@ -129,6 +143,9 @@ const IndexPage = (props) => {
         {/* <ul>
       
         </ul> */}
+        <div className="banner-container">
+          <Image fluid={site.bannerImage.picture.asset.fluid} />
+        </div>
 
         {postNodes && (
           <BlogPostPreviewList

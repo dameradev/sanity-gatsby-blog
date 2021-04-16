@@ -1,0 +1,31 @@
+.banner-container {
+  height: 80vh;
+
+  position: relative;
+  // margin: 0 -8rem;
+  // width: 100vw;
+  overflow: hidden;
+  margin-bottom: 8rem;
+  &__title {
+    position: absolute;
+    color: #fff;
+    z-index: 100;
+    right: 5rem;
+    bottom: 15%;
+    font-size: 8rem;
+    width: 30%;
+    span {
+      color: #000;
+    }
+  }
+
+  &:after {
+    content: "";
+    width: 30%;
+    height: 80vh;
+    background: #fff;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
