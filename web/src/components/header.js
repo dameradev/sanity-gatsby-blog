@@ -3,16 +3,16 @@ import React from "react";
 import Icon from "./icon";
 import { cn } from "../lib/helpers";
 
-import * as styles from "./header.module.css";
+import  "./header.scss";
 
 const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
-  <div className={styles.root}>
-    <div className={styles.wrapper}>
-      <div className={styles.branding}>
+  <div className="root">
+    <div className="wrapper">
+      <div className="branding">
         <Link to="/">{siteTitle}</Link>
       </div>
 
-      <nav className={styles.desktopNav}>
+      <nav className="desktopNav">
         <ul>
           <li>
             <Link to="/archive/">Services</Link>
@@ -30,13 +30,13 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
       </nav>
 
       <button
-        className={styles.toggleNavButton}
+        className="toggleNavButton"
         onClick={showNav ? onHideNav : onShowNav}
       >
         <Icon symbol="hamburger" />
       </button>
 
-      <nav className={cn(styles.nav, showNav && styles.showNav)}>
+      <nav className="nav showNav">
         <ul>
           <li>
             <Link to="/archive/">Home</Link>

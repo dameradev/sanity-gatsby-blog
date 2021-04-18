@@ -1,0 +1,14 @@
+@import "../styles/custom-media.css";
+@import "../styles/custom-properties.css";
+
+.root {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.item {
+  text-transform: uppercase;
+  font-weight: bold;
+}

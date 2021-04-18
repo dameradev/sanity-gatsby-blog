@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import Header from "./header";
 
 import "../styles/layout.css";
-import * as styles from "./layout.module.css";
+import "./layout.scss";
 
 const Layout = ({
   children,
@@ -21,9 +21,10 @@ const Layout = ({
       showNav={showNav}
     />
     {console.log(footer)}
-    <div className={styles.content}>{children}</div>
-    <footer className={styles.footer}>
-      <div className={styles.footerWrapper}>
+
+    <div className="content">{children}</div>
+    <footer className="footer">
+      <div className="footerWrapper">
         <div>
           <h3>{footer.about}</h3>
           <p>{footer.aboutDescription}</p>
@@ -48,13 +49,15 @@ const Layout = ({
           </ul>
         </div>
       </div>
-      {/* <div className={styles.siteInfo}>
+      {/* <div className="siteInfo">
         {console.log(footer)}
         Copyright &copy; {new Date().getFullYear()},{" "}
         <span>Budapest Agency</span>
       </div> */}
     </footer>
+  
   </>
+  
 );
 
 export default Layout;

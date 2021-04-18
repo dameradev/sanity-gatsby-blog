@@ -143,3 +143,74 @@
 .showNav {
   display: block;
 }
+
+.nav{
+  display: none;
+  background-color: #000;
+  color: #fff;
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  top: 0;
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li{
+      a{
+        display: block;
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  }
+
+  @media(hover:hover){
+    & ul {
+       & li{
+         & a:hover{
+          color: var(--color-accent);
+         }
+       }
+    } 
+  }
+
+  @media (--media-max-small) {
+    position: absolute;
+    background: var(--color-white);
+    color: var(--color-black);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    left: 0;
+    right: 0;
+    top: 4.3rem;
+
+     & ul {
+      padding: 1rem 0;
+      & li{
+        & a{
+          padding: 0.5rem 1.5rem;
+        }
+      }
+    }
+  }
+  @media (--media-min-small) {
+    display: block;
+
+    & ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      & li{
+        & a{
+          padding: 0.5rem;
+        }
+      }
+    }
+  }
+  
+
+}
+
+.showNav {
+  display: block;
+}

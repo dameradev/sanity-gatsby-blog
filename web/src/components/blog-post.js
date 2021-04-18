@@ -1,4 +1,4 @@
-import * as styles from "./blog-post.module.css";
+import  "./blog-post.scss";
 // import { differenceInDays, formatDistance, format } from "date-fns";
 // import AuthorList from "./author-list";
 import Container from "./container";
@@ -23,9 +23,9 @@ function BlogPost(props) {
   const images = gallery.map((imageObject) => imageObject.picture.asset);
 
   return (
-    <article className={styles.root}>
+    <article className="root">
       {mainImage && mainImage.asset && (
-        <div className={styles.mainImage}>
+        <div className="mainImage">
           <img
             src={imageUrlFor(buildImageObj(mainImage))
               .width(1200)
@@ -35,19 +35,19 @@ function BlogPost(props) {
               .url()}
             alt={mainImage.alt}
           />
-          <h1 className={styles.title}>{title}</h1>
+          <h1 className="title">{title}</h1>
         </div>
       )}
       <Container>
-        <div className={styles.grid}>
-          <div className={styles.mainContent}>
+        <div className="grid">
+          <div className="mainContent">
             {_rawBody && <PortableText blocks={_rawBody} />}
           </div>
 
-          {/* <div className={styles.imageGrid}>
+          {/* <div className="imageGrid">
             {gallery.map((pic, idx) => (
               <Image
-                className={styles.image}
+                className="image"
                 fluid={pic.picture.asset.fluid}
                 key={idx}
               />
