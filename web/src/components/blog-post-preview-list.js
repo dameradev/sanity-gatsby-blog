@@ -3,6 +3,7 @@ import BlogPostPreview from "./blog-post-preview";
 
 import React from "react";
 import Title from "./Title";
+import ThreePostList from "./ThreePostList";
 
 function BlogPostPreviewGrid(props) {
   return (
@@ -18,6 +19,20 @@ function BlogPostPreviewGrid(props) {
               </li>
             ))}
         </ul>
+        <div className="posts-list">
+          <div>
+            <h2>Blog</h2>
+            <ul className="blog-posts">
+              <ThreePostList posts={props.blogPosts} />
+            </ul>
+          </div>
+          <div>
+            <h2>Services</h2>
+            <ul className="blog-posts">
+              <ThreePostList posts={props.services} />
+            </ul>
+          </div>
+        </div>
       </div>
     </>
   );

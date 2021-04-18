@@ -26,10 +26,12 @@ const Layout = ({
       <div className={styles.footerWrapper}>
         <div>
           <h3>{footer.about}</h3>
+          <hr></hr>
           <p>{footer.aboutDescription}</p>
         </div>
         <div>
           <h3>{footer.contact}</h3>
+          <hr></hr>
           <ul>
             {footer.contactDescription.map((el) => (
               <li key={el}>{el}</li>
@@ -39,6 +41,7 @@ const Layout = ({
 
         <div>
           <h3>Quick links</h3>
+          <hr></hr>
           <ul>
             {footer.quickLinks.map((el) => (
               <li key={el.text}>

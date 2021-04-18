@@ -24,6 +24,7 @@ import award from "./objects/aboutUs/award";
 import testamonial from "./objects/aboutUs/testamonial";
 import person from "./objects/aboutUs/person";
 import perk from "./objects/aboutUs/perk";
+import content from "./objects/aboutUs/content";
 import aboutUs from "./documents/aboutUs";
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -43,6 +44,7 @@ export default createSchema({
     postTag,
     award,
     testamonial,
+    content,
     person,
     perk,
     aboutUs,

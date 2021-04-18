@@ -32,6 +32,18 @@ export function buildImageObj(source = { asset: {} }) {
   return imageObj;
 }
 
+export function formatDate(date) {
+  var d = new Date(date),
+    month = "" + (d.getMonth() + 1),
+    day = "" + d.getDate(),
+    year = d.getFullYear();
+
+  if (month.length < 2) month = "0" + month;
+  if (day.length < 2) day = "0" + day;
+
+  return [day, month, year].join(".");
+}
+
 export function toPlainText(blocks) {
   if (!blocks) {
     return "";

@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 import {
   filterOutDocsPublishedInTheFuture,
   filterOutDocsWithoutSlugs,
+  formatDate,
   mapEdgesToNodes,
 } from "../lib/helpers";
 import BlogPostPreviewList from "../components/blog-post-preview-list";
@@ -57,7 +58,31 @@ export const query = graphql`
           }
         }
       }
+      services {
+        _updatedAt
+        title
+        mainImage {
+          asset {
+            fluid {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
+      }
+      blogPosts {
+        _updatedAt
+        title
+        mainImage {
+          asset {
+            fluid {
+              ...GatsbySanityImageFluid
+            }
+          }
+          # alt
+        }
+      }
     }
+
     categories: allSanityCategory {
       edges {
         node {
@@ -105,7 +130,7 @@ const IndexPage = (props) => {
   const { data, errors } = props;
 
   // console.log(data);
-  console.log(data, "here");
+  console.log(data.site, "here");
   let images = data.images.nodes;
   images = images.map((imageObject) => imageObject.picture.asset);
   if (errors) {
@@ -150,10 +175,24 @@ const IndexPage = (props) => {
         {postNodes && (
           <BlogPostPreviewList
             // title="Latest blog posts"
+            blogPosts={site.blogPosts}
+            services={site.services}
             nodes={postNodes}
             browseMoreHref="/archive/"
           />
         )}
+        {/* <ul className="blog-posts">
+          {site.blogPosts.map((post) => (
+            <li className="blog-posts__post">
+              <Image fluid={post.mainImage.asset.fluid} />
+              <div>
+                <p>{formatDate(post._updatedAt)}</p>
+                <h3>{post.title}</h3>
+              </div>
+            </li>
+          ))}
+        </ul> */}
+
         <GalleryGrid images={images} />
         <ThisIsUs />
         <ContactUs />

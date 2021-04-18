@@ -10,39 +10,10 @@ export default {
     },
 
     {
-      name: "firstTitle",
-      type: "string",
-      title: "Title",
-    },
-
-    {
-      name: "firstParagraph",
-      type: "bodyPortableText",
-      title: "Body",
-    },
-
-    {
-      name: "secondTitle",
-      type: "string",
-      title: "Title",
-    },
-
-    {
-      name: "secondParagraph",
-      type: "bodyPortableText",
-      title: "Body",
-    },
-
-    {
-      name: "thirdTitle",
-      type: "string",
-      title: "Title",
-    },
-
-    {
-      name: "thirdParagraph",
-      type: "bodyPortableText",
-      title: "Body",
+      title: "Content",
+      type: "array",
+      name: "content",
+      of: [{ type: "content" }],
     },
     {
       title: "People",

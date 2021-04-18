@@ -57,13 +57,19 @@ export const query = graphql`
             }
           }
         }
-        _rawFirstParagraph
-        _rawSecondParagraph
-        _rawThirdParagraph
-        thirdTitle
-        secondTitle
-        firstTitle
-
+        content {
+          title
+          _rawText
+          image {
+            picture {
+              asset {
+                fluid {
+                  ...GatsbySanityImageFluid
+                }
+              }
+            }
+          }
+        }
         awards {
           award
           year
@@ -89,28 +95,16 @@ const AboutPage = (props) => {
   const about = data.allSanityAboutUs.nodes[0];
   console.log(about);
 
-  const {
-    firstTitle,
-    secondTitle,
-    thirdTitle,
-    _rawFirstParagraph,
-    _rawSecondParagraph,
-    _rawThirdParagraph,
-    people,
-    perks,
-    awards,
-    testamonials,
-    mainImage,
-  } = about;
+  const { people, perks, awards, testamonials, mainImage, content } = about;
 
   console.log(mainImage);
   return (
     <Layout>
-      <SEO
-      // title={site.title}
-      // description={site.description}
-      // keywords={site.keywords}
-      />
+      {/* <SEO
+        title={site.title}
+        description={site.description}
+        keywords={site.keywords}
+      /> */}
       <Container>
         <div className={styles.aboutus__banner}>
           <div className={styles.aboutus__text}>
@@ -120,11 +114,14 @@ const AboutPage = (props) => {
           <Image fluid={mainImage.picture.asset.fluid} />
         </div>
         <div className={styles.first__div}>
-          <div className={styles.first__image}></div>
+          <div className={styles.first__image}>
+            <Image fluid={content[0].image.picture.asset.fluid} />
+          </div>
           <div className={styles.first__paragraph}>
-            <h1 className={styles.first__h1}>{firstTitle}</h1>
+            <h1 className={styles.first__h1}>{content[0].title}</h1>
             <hr></hr>
-            {_rawFirstParagraph && <PortableText blocks={_rawFirstParagraph} />}
+
+            <PortableText blocks={content[0]._rawText} />
           </div>
         </div>
 
@@ -142,15 +139,16 @@ const AboutPage = (props) => {
             <h1 className={styles.title}>{title}</h1>
           </div>
         )} */}
-        <div className={styles.first__div}>
+        <div className={styles.second__div}>
           <div className={styles.first__paragraph}>
-            <h1 className={styles.first__h1}>{secondTitle}</h1>
+            <h1 className={styles.first__h1}>{content[1].title}</h1>
             <hr></hr>
-            {_rawSecondParagraph && (
-              <PortableText blocks={_rawSecondParagraph} />
-            )}
+
+            <PortableText blocks={content[1]._rawText} />
           </div>
-          <div className={styles.first__image}></div>
+          <div className={styles.first__image}>
+            <Image fluid={content[1].image.picture.asset.fluid} />
+          </div>
         </div>
 
         <ul className={styles.perks}>
@@ -164,11 +162,13 @@ const AboutPage = (props) => {
         </ul>
 
         <div className={styles.first__div}>
-          <div className={styles.first__image}></div>
+          <div className={styles.first__image}>
+            <Image fluid={content[2].image.picture.asset.fluid} />
+          </div>
           <div className={styles.first__paragraph}>
-            <h1 className={styles.first__h1}>{thirdTitle}</h1>
+            <h1 className={styles.first__h1}>{content[2].title}</h1>
             <hr></hr>
-            {_rawThirdParagraph && <PortableText blocks={_rawThirdParagraph} />}
+            <PortableText blocks={content[2]._rawText} />
           </div>
         </div>
         <ul className={styles.awards}>

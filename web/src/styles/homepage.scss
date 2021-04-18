@@ -29,3 +29,45 @@
     top: 0;
   }
 }
+
+.posts-list {
+  display: flex;
+  gap: 2rem;
+}
+
+.blog-posts {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  // max-width: max-content;
+
+  &__post {
+    height: 10rem;
+    max-width: max-content;
+    display: flex;
+    // // grid-template-columns: 1fr 1fr;
+    // // justify-items: flex-start;
+    // // align-content: center;
+
+    // gap: 1rem;
+
+    &:not(:last-of-type) {
+      margin-bottom: 1rem;
+    }
+
+    .gatsby-image-wrapper {
+      margin-right: 1rem;
+      min-width: 14rem;
+      max-height: 8rem !important;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover !important;
+      }
+    }
+    p {
+      color: #949494;
+    }
+  }
+}

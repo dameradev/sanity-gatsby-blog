@@ -44,5 +44,33 @@ export default {
       description: "Fill in the content of the footer here",
       title: "Footer",
     },
+
+    {
+      name: "blogPosts",
+      type: "array",
+      title: "Blog posts",
+      of: [
+        {
+          type: "reference",
+          to: {
+            type: "post",
+          },
+        },
+      ],
+    },
+
+    {
+      name: "services",
+      type: "array",
+      title: "Services",
+      of: [
+        {
+          type: "reference",
+          to: {
+            type: "post",
+          },
+        },
+      ],
+    },
   ],
 };

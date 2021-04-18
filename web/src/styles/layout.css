@@ -12,41 +12,7 @@ body {
   color: var(--color-black);
   margin: 0;
   font-size: 1rem;
-  font-family: "Chronicle Display Roman";
-}
-
-@font-face {
-  font-family: "Chronicle Display Light Italic";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/web/src/assets/fonts/Chronicle\ Display\ Light\ Italic.woff")
-    format("woff");
-}
-
-@font-face {
-  font-family: "Chronicle Display Roman";
-  font-style: normal;
-  font-weight: normal;
-  /* src: url("/fonts/glacial-indifference/GlacialIndifference-Regular.eot"); */
-  /* src: url("/fonts/glacial-indifference/GlacialIndifference-Regular.woff2") format("woff2"), url("./fonts/glacial-indifference/GlacialIndifference-Regular.woff") format("woff"), url("./fonts/glacial-indifference/GlacialIndifference-Regular.ttf") format("truetype"), url("./fonts/glacial-indifference/GlacialIndifference-Regular.otf") format("opentype"), url("./fonts/glacial-indifference/GlacialIndifference-Regular.svg") format("svg"); */
-  src: url("/web/src/assets/fonts/Chronicle\ Display\ Roman.woff")
-    format("woff");
-}
-
-@font-face {
-  font-family: "Chronicle Display Semibold";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/web/src/assets/fonts/Chronicle\ Display\ Semibold.woff")
-    format("woff");
-}
-
-@font-face {
-  font-family: "Chronicle Display Black";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/web/src/assets/fonts/Chronicle\ Display\ Black.woff")
-    format("woff");
+  font-family: "Playfair Display";
 }
 
 /* html,
